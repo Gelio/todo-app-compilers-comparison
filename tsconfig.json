@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "strict": true,
+    "module": "commonjs",
+    "target": "ES5",
+    "noEmit": true,
+    "moduleResolution": "node",
+
+    "sourceMap": true,
+    "esModuleInterop": true
+  }
+}

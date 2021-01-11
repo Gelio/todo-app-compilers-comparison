@@ -2,6 +2,7 @@ import { Configuration } from "webpack";
 import { resolve } from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 
 const production = process.env.NODE_ENV === "production";
 const port = parseInt(process.env.PORT!, 10) || 8080;
@@ -45,6 +46,13 @@ const config: Configuration = {
     }),
     new MiniCssExtractPlugin(),
   ],
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+    },
+    minimize: production,
+    minimizer: ["...", new CssMinimizerPlugin()],
+  },
   devServer: {
     port,
   },

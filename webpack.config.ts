@@ -3,6 +3,7 @@ import { resolve } from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
+import CopyWebpackPlugin from "copy-webpack-plugin";
 
 const production = process.env.NODE_ENV === "production";
 const port = parseInt(process.env.PORT!, 10) || 8080;
@@ -45,6 +46,9 @@ const config: Configuration = {
       title: "Todo App",
     }),
     new MiniCssExtractPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [{ from: "src/assets" }],
+    }),
   ],
   optimization: {
     splitChunks: {

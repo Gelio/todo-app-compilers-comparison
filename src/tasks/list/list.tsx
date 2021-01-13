@@ -9,21 +9,25 @@ export const TaskList: FunctionComponent = () => {
 
   return (
     <div>
-      <ul>
-        {tasks.map((task, index) => (
-          <TaskItem
-            key={task.id}
-            task={task}
-            onToggle={() => {
-              setTasks((currentTasks) =>
-                produce(currentTasks, (draft) => {
-                  draft[index].completed = !draft[index].completed;
-                }),
-              );
-            }}
-          />
-        ))}
-      </ul>
+      {tasks.length > 0 ? (
+        <ul>
+          {tasks.map((task, index) => (
+            <TaskItem
+              key={task.id}
+              task={task}
+              onToggle={() => {
+                setTasks((currentTasks) =>
+                  produce(currentTasks, (draft) => {
+                    draft[index].completed = !draft[index].completed;
+                  }),
+                );
+              }}
+            />
+          ))}
+        </ul>
+      ) : (
+        <p className="mt-5">Use the input above to add your first task</p>
+      )}
     </div>
   );
 };

@@ -14,7 +14,7 @@ export const TaskItem: FunctionComponent<TaskItemProps> = ({
   return (
     <li className="my-2 flex items-center">
       <CheckCircle checked={task.completed} onClick={onToggle} />
-      <p className={`ml-2 ${task.completed ? "line-through" : ""}`}>
+      <p className={`ml-2 flex-1 ${task.completed ? "line-through" : ""}`}>
         {task.text}
       </p>
     </li>

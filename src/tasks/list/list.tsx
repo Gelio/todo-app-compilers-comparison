@@ -26,7 +26,7 @@ export const TaskList: FunctionComponent = () => {
           ))}
         </ul>
       ) : (
-        <p className="mt-5">Use the input above to add your first task</p>
+        <p>Use the input above to add your first task</p>
       )}
     </div>
   );

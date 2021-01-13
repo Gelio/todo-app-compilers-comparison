@@ -2,6 +2,7 @@ import ReactDOM from "react-dom";
 import { App } from "./app";
 
 import "tailwindcss/tailwind.css";
+import "./index.css";
 
 const reactRoot = document.createElement("div");
 reactRoot.classList.add("root");

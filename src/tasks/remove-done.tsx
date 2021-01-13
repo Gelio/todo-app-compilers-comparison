@@ -1,17 +1,23 @@
-import { FunctionComponent } from "react";
-import { useSetRecoilState } from "recoil";
+import { FunctionComponent, useCallback } from "react";
+import { selector, useRecoilState, useSetRecoilState } from "recoil";
 import { Button } from "../components";
 import { taskListState } from "./state";
 
 export const RemoveDoneTasksButton: FunctionComponent = () => {
-  const setTasks = useSetRecoilState(taskListState);
+  const [tasks, setTasks] = useRecoilState(taskListState);
+
+  const completedTasks = tasks.filter((task) => task.completed);
+
+  const removeCompletedTasks = useCallback(
+    () => setTasks((t) => t.filter((task) => !task.completed)),
+    [setTasks],
+  );
 
   return (
     <Button
       className="w-full"
-      onClick={() =>
-        setTasks((tasks) => tasks.filter((task) => !task.completed))
-      }
+      disabled={completedTasks.length === 0}
+      onClick={removeCompletedTasks}
     >
       Remove done tasks
     </Button>

@@ -1,5 +1,7 @@
-import { tsLoaderConfig } from "./ts-loader-config";
+import { babelLoaderConfigFactory } from "./babel-loader-config";
+import { tsLoaderConfigFactory } from "./ts-loader-config";
 
 export const tsCompilerConfigs = {
-  tsLoader: tsLoaderConfig,
+  tsLoader: tsLoaderConfigFactory,
+  babelLoader: babelLoaderConfigFactory,
 };

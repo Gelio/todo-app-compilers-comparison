@@ -9,7 +9,9 @@ import { tsCompilerConfigs } from "./config";
 const production = process.env.NODE_ENV === "production";
 const port = parseInt(process.env.PORT!, 10) || 8080;
 
-const tsCompilerConfig = tsCompilerConfigs.tsLoader;
+const tsCompiler: keyof typeof tsCompilerConfigs = "tsLoader";
+
+const tsCompilerConfig = tsCompilerConfigs[tsCompiler](production);
 
 const config: Configuration = {
   mode: production ? "production" : "development",
@@ -66,6 +68,7 @@ const config: Configuration = {
   },
   devServer: {
     port,
+    hot: !production,
   },
 };
 

@@ -5,3 +5,5 @@ export interface TSCompilerConfig {
   plugins: WebpackPluginInstance[];
   use: RuleSetUseItem[];
 }
+
+export type TSCompilerConfigFactory = (production: boolean) => TSCompilerConfig;

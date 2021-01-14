@@ -22,9 +22,11 @@ export const swcLoaderConfigFactory: TSCompilerConfigFactory = (
               development: !production,
             },
           },
+          minify: production,
         },
       },
     },
   ],
   plugins: [],
+  minimizer: "none",
 });

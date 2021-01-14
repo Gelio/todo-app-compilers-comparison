@@ -9,7 +9,7 @@ import { tsCompilerConfigs } from "./config";
 const production = process.env.NODE_ENV === "production";
 const port = parseInt(process.env.PORT!, 10) || 8080;
 
-const tsCompiler: keyof typeof tsCompilerConfigs = "esbuildLoader";
+const tsCompiler: keyof typeof tsCompilerConfigs = "swcLoader";
 
 const tsCompilerConfig = tsCompilerConfigs[tsCompiler](production);
 
@@ -64,7 +64,15 @@ const config: Configuration = {
       chunks: "all",
     },
     minimize: production,
-    minimizer: ["...", new CssMinimizerPlugin()],
+    minimizer: [
+      tsCompilerConfig.minimizer === "terser"
+        ? ("..." as "...")
+        : tsCompilerConfig.minimizer === "none"
+        ? // NOTE: will get filtered out below
+          (false as never)
+        : tsCompilerConfig.minimizer,
+      new CssMinimizerPlugin(),
+    ].filter(Boolean),
   },
   devServer: {
     port,

@@ -1,5 +1,5 @@
 import { TSCompilerConfigFactory } from "./ts-compiler-config";
-import { ESBuildPlugin } from "esbuild-loader";
+import { ESBuildPlugin, ESBuildMinifyPlugin } from "esbuild-loader";
 
 /**
  * @see https://github.com/privatenumber/esbuild-loader
@@ -17,4 +17,7 @@ export const esbuildLoaderConfigFactory: TSCompilerConfigFactory = () => ({
     },
   ],
   plugins: [new ESBuildPlugin()],
+  // NOTE: for some reason, the app does not start with this plugin
+  // minimizer: new ESBuildMinifyPlugin(),
+  minimizer: "terser",
 });

@@ -4,4 +4,5 @@ export const tsLoaderConfigFactory: TSCompilerConfigFactory = () => ({
   name: "ts-loader",
   plugins: [],
   use: ["ts-loader"],
+  minimizer: "terser",
 });

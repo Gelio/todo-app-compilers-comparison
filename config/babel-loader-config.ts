@@ -24,4 +24,5 @@ export const babelLoaderConfigFactory: TSCompilerConfigFactory = (
     },
   ],
   plugins: production ? [] : [new ReactRefreshWebpackPlugin()],
+  minimizer: "terser",
 });

@@ -10,12 +10,13 @@ reactRoot.classList.add("root");
 
 document.body.append(reactRoot);
 
-if (TS_COMPILER === "swc") {
+if (["swc", "esbuild"].includes(TS_COMPILER)) {
   /**
-   * swc does not support the React 17 JSX transform. Thus, a workaround to have React in the global
-   * scope.
+   * swc and esbuild do not support the React 17 JSX transform. Thus, a workaround to have React in
+   * the global scope.
    *
    * @see https://github.com/swc-project/swc/issues/1103
+   * @see https://github.com/evanw/esbuild/issues/334
    */
   window.React = React;
 }

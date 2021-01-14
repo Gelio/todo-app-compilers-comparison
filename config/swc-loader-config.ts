@@ -1,5 +1,9 @@
 import { TSCompilerConfigFactory } from "./ts-compiler-config";
 
+/**
+ * @see https://github.com/swc-project/swc-loader
+ * @see https://swc.rs/
+ */
 export const swcLoaderConfigFactory: TSCompilerConfigFactory = (
   production,
 ) => ({

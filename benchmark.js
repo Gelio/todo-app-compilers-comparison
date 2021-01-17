@@ -3,18 +3,13 @@
 const child_process = require("child_process");
 
 console.log("Running the benchmark");
-const tsCompilers = ["ts", "babel", "swc", "esbuild"];
 
-const testRuns = 1;
+const testRuns = 5;
 
 const variants = [
-  ...tsCompilers.map((tsCompiler) => ({
-    command: `TS_COMPILER=${tsCompiler} npm run build`,
-    name: tsCompiler,
-  })),
   {
-    name: "esbuild without webpack",
-    command: "npm run esbuild:prod",
+    name: "snowpack",
+    command: "npm run snowpack:build",
   },
 ];
 
@@ -45,7 +40,7 @@ console.log("Results", results);
  */
 function measureCompilationTime(command) {
   console.log("Clearing the dist directory");
-  child_process.execSync("rm dist -rf");
+  child_process.execSync("rm build -rf");
   console.log("Done, beginning compilation");
 
   const startTime = process.hrtime();

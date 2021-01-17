@@ -18,7 +18,7 @@ export function App() {
           </div>
         </div>
 
-        <div className="my-4 ml-2">Compiled using {TS_COMPILER}</div>
+        <div className="my-4 ml-2">Compiled using snowpack</div>
       </div>
     </RecoilRoot>
   );

@@ -1,5 +1,6 @@
 import { TSCompilerConfigFactory } from "./ts-compiler-config";
 import { ESBuildPlugin /* , ESBuildMinifyPlugin */ } from "esbuild-loader";
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 
 /**
  * @see https://github.com/privatenumber/esbuild-loader
@@ -16,7 +17,7 @@ export const esbuildLoaderConfigFactory: TSCompilerConfigFactory = () => ({
       },
     },
   ],
-  plugins: [new ESBuildPlugin()],
+  plugins: [new ESBuildPlugin(), new ForkTsCheckerWebpackPlugin()],
   // NOTE: for some reason, the app does not start with this plugin
   // minimizer: new ESBuildMinifyPlugin(),
   minimizer: "terser",

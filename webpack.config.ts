@@ -9,7 +9,7 @@ import { tsCompilerConfigs } from "./config";
 const production = process.env.NODE_ENV === "production";
 const port = parseInt(process.env.PORT!, 10) || 8080;
 
-const tsCompiler: keyof typeof tsCompilerConfigs = "swcLoader";
+const tsCompiler: keyof typeof tsCompilerConfigs = "tsLoader";
 
 const tsCompilerConfig = tsCompilerConfigs[tsCompiler](production);
 

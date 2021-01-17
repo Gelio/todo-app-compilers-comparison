@@ -1,5 +1,6 @@
 import { TSCompilerConfigFactory } from "./ts-compiler-config";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 
 export const babelLoaderConfigFactory: TSCompilerConfigFactory = (
   production,
@@ -23,6 +24,9 @@ export const babelLoaderConfigFactory: TSCompilerConfigFactory = (
       },
     },
   ],
-  plugins: production ? [] : [new ReactRefreshWebpackPlugin()],
+  plugins: [
+    ...(production ? [] : [new ReactRefreshWebpackPlugin()]),
+    new ForkTsCheckerWebpackPlugin(),
+  ],
   minimizer: "terser",
 });

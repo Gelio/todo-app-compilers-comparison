@@ -1,4 +1,5 @@
 import { TSCompilerConfigFactory } from "./ts-compiler-config";
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 
 /**
  * @see https://github.com/swc-project/swc-loader
@@ -27,6 +28,6 @@ export const swcLoaderConfigFactory: TSCompilerConfigFactory = (
       },
     },
   ],
-  plugins: [],
+  plugins: [new ForkTsCheckerWebpackPlugin()],
   minimizer: "none",
 });

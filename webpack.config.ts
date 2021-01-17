@@ -2,7 +2,6 @@ import { Configuration, DefinePlugin } from "webpack";
 import { resolve } from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import { tsCompilerConfigs } from "./config";
 
@@ -90,7 +89,6 @@ const config: Configuration = {
         ? // NOTE: will get filtered out below
           (false as never)
         : tsCompilerConfig.minimizer,
-      new CssMinimizerPlugin(),
     ].filter(Boolean),
   },
   devServer: {

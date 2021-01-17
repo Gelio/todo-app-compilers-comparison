@@ -23,11 +23,13 @@ export const swcLoaderConfigFactory: TSCompilerConfigFactory = (
               development: !production,
             },
           },
-          minify: production,
+          // minify: production,
         },
       },
     },
   ],
   plugins: [new ForkTsCheckerWebpackPlugin()],
-  minimizer: "none",
+  // For some reason, the default minification is not as great here. Perhaps I misconfigured swc
+  // minimizer: "none",
+  minimizer: "terser",
 });

@@ -11,7 +11,8 @@
     "build:prod": "cross-env NODE_ENV=production webpack",
     "predeploy": "npm run build:prod",
     "check-types": "tsc -p . --noEmit",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "benchmark": "node benchmark.js"
   },
   "repository": {
     "type": "git",

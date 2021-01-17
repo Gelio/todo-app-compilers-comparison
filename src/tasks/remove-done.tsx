@@ -1,5 +1,5 @@
 import { FunctionComponent, useCallback } from "react";
-import { selector, useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { Button } from "../components";
 import { taskListState } from "./state";
 

@@ -1,4 +1,4 @@
-import produce, { current } from "immer";
+import produce from "immer";
 import { FunctionComponent } from "react";
 import { useRecoilState } from "recoil";
 import { taskListState } from "../state";

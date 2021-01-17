@@ -1,5 +1,5 @@
 import { TSCompilerConfigFactory } from "./ts-compiler-config";
-import { ESBuildPlugin, ESBuildMinifyPlugin } from "esbuild-loader";
+import { ESBuildPlugin /* , ESBuildMinifyPlugin */ } from "esbuild-loader";
 
 /**
  * @see https://github.com/privatenumber/esbuild-loader

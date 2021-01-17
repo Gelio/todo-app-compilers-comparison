@@ -9,9 +9,28 @@ import { tsCompilerConfigs } from "./config";
 const production = process.env.NODE_ENV === "production";
 const port = parseInt(process.env.PORT!, 10) || 8080;
 
-const tsCompiler: keyof typeof tsCompilerConfigs = "tsLoader";
+type TSCompilerType = keyof typeof tsCompilerConfigs;
+const defaultTSCompilerType: TSCompilerType = "ts";
 
-const tsCompilerConfig = tsCompilerConfigs[tsCompiler](production);
+const tsCompilerType = ((): TSCompilerType => {
+  const tsCompilerEnv = process.env.TS_COMPILER;
+  if (tsCompilerEnv === undefined) {
+    return defaultTSCompilerType;
+  }
+  if (tsCompilerEnv in tsCompilerConfigs) {
+    return tsCompilerEnv as TSCompilerType;
+  }
+
+  console.error(
+    "Invalid TS_COMPILER. Possible values are:",
+    Object.keys(tsCompilerConfigs),
+  );
+  process.exit(1);
+})();
+
+console.log("Using the following TS compiler:", tsCompilerType);
+
+const tsCompilerConfig = tsCompilerConfigs[tsCompilerType](production);
 
 const config: Configuration = {
   mode: production ? "production" : "development",

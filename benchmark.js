@@ -9,7 +9,7 @@ const testRuns = 5;
 const variants = [
   {
     name: "snowpack",
-    command: "npm run snowpack:build",
+    command: "npm run build",
   },
 ];
 

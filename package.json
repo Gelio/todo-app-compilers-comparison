@@ -7,8 +7,8 @@
   "scripts": {
     "check-types": "tsc -p . --noEmit",
     "deploy": "gh-pages -d dist",
-    "snowpack:dev": "snowpack dev",
-    "snowpack:build": "snowpack build"
+    "start": "snowpack dev",
+    "build": "snowpack build"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,6 @@
   "devDependencies": {
     "@snowpack/plugin-postcss": "^1.1.0",
     "@snowpack/plugin-react-refresh": "^2.4.0",
-    "@snowpack/plugin-webpack": "^2.3.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "autoprefixer": "^10.2.1",

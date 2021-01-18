@@ -5,7 +5,7 @@ const child_process = require("child_process");
 console.log("Running the benchmark");
 const tsCompilers = ["ts", "babel", "swc", "esbuild"];
 
-const testRuns = 1;
+const testRuns = 5;
 
 const variants = [
   ...tsCompilers.map((tsCompiler) => ({
